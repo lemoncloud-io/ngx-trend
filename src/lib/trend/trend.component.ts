@@ -54,7 +54,7 @@ import { normalizeDataset } from './trend.helpers';
       }" />
     <ng-container *ngIf="showCircle">
       <style>
-        .small { font-size: 10px; font-weight: 300; text-anchor: middle; stroke-width: 0;}
+        .small { font-size: 12px; font-weight: 300; text-anchor: middle; stroke-width: 0;}
       </style>
       <ng-container *ngFor="let circle of circleCoordinates; index as i">
         <circle [attr.cx]="circle.x" [attr.cy]="circle.y" [attr.r]="circleWidth"
