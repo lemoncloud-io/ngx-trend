@@ -13,7 +13,7 @@ const linecaps = ['butt', 'round', 'square'];
 
 const defaultGradient = gradients[4];
 const defaultLinecap = linecaps[0];
-const placeholderData = [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0];
+const placeholderData = [10000, 20000, 50000, 90000, 50000, 100000, 30000, 50000, 0, 0, 10000, 80000, 20000, 90000];
 
 @Component({
   selector: 'app-root',
