@@ -52,6 +52,13 @@ import { normalizeDataset } from './trend.helpers';
           lineLength: lineLength
         }
       }" />
+    <ng-container *ngIf="showCircle">
+      <ng-container *ngFor="let circle of circleCoordinates">
+        <circle [attr.cx]="circle.x" [attr.cy]="circle.y" [attr.r]="circleWidth"
+                [attr.fill]="circleColor" [attr.stroke]="circleColor"
+                [attr.strokeWidth]="circleWidth" />
+      </ng-container>
+    </ng-container>
   </svg>
   `,
   animations: [
@@ -105,6 +112,12 @@ export class TrendComponent implements OnChanges {
   @Input() svgHeight: string | number = '25%';
   @Input() svgWidth: string | number = '100%';
   @ViewChild('pathEl') pathEl: ElementRef;
+  // Added for Circle
+  @Input() showCircle = true;
+  @Input() circleColor = 'black';
+  @Input() circleWidth = 1;
+  circleCoordinates: any[];
+
   gradientTrimmed: any[];
   d: any;
   viewBox: string;
@@ -165,6 +178,7 @@ export class TrendComponent implements OnChanges {
       viewBoxHeight - this.padding,
       this.padding,
     );
+    this.circleCoordinates = normalizedValues;
 
     if (this.autoDraw && this.animationState !== 'active') {
       this.animationState = 'inactive';
