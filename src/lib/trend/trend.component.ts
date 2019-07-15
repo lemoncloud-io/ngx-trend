@@ -53,10 +53,17 @@ import { normalizeDataset } from './trend.helpers';
         }
       }" />
     <ng-container *ngIf="showCircle">
-      <ng-container *ngFor="let circle of circleCoordinates">
+      <style>
+        .small { font-size: 10px; font-weight: 300; text-anchor: middle; stroke-width: 0;}
+      </style>
+      <ng-container *ngFor="let circle of circleCoordinates; index as i">
         <circle [attr.cx]="circle.x" [attr.cy]="circle.y" [attr.r]="circleWidth"
                 [attr.fill]="circleColor" [attr.stroke]="circleColor"
                 [attr.strokeWidth]="circleWidth" />
+        <text *ngIf="showLastLabel && i === circleCoordinates.length - 1"
+              class="small"
+              [attr.x]="lastLabelCoordinates.x"
+              [attr.y]="lastLabelCoordinates.y">{{ data[data.length-1] }}</text>
       </ng-container>
     </ng-container>
   </svg>
@@ -113,10 +120,12 @@ export class TrendComponent implements OnChanges {
   @Input() svgWidth: string | number = '100%';
   @ViewChild('pathEl') pathEl: ElementRef;
   // Added for Circle
-  @Input() showCircle = true;
+  @Input() showCircle = false;
+  @Input() showLastLabel = false;
   @Input() circleColor = 'black';
   @Input() circleWidth = 1;
   circleCoordinates: any[];
+  lastLabelCoordinates: { x: any, y: any };
 
   gradientTrimmed: any[];
   d: any;
@@ -130,6 +139,7 @@ export class TrendComponent implements OnChanges {
     this.id = generateId();
     this.gradientId = `ngx-trend-vertical-gradient-${this.id}`;
   }
+
   ngOnChanges() {
     // We need at least 2 points to draw a graph.
     if (!this.data || this.data.length < 2) {
@@ -179,6 +189,8 @@ export class TrendComponent implements OnChanges {
       this.padding,
     );
     this.circleCoordinates = normalizedValues;
+    this.lastLabelCoordinates = this.getLabelCoordinateOfLast();
+
 
     if (this.autoDraw && this.animationState !== 'active') {
       this.animationState = 'inactive';
@@ -191,5 +203,15 @@ export class TrendComponent implements OnChanges {
     this.d = this.smooth
       ? buildSmoothPath(normalizedValues, this.radius)
       : buildLinearPath(normalizedValues);
+  }
+
+  private getLabelCoordinateOfLast() {
+    const lastIndex = this.circleCoordinates.length - 1;
+    const { x, y } = this.circleCoordinates[lastIndex];
+    const result = {
+      x: x,
+      y: y + 10
+    };
+    return result;
   }
 }
