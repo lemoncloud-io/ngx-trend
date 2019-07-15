@@ -42,12 +42,18 @@ Allow the circle(dot) to draw on the graph. It is useful when radius is 0.
 | ------- | -------- | ------- |
 | boolean | ✕        | `false` |
 
+#### `labelColor`
+| Type    | Required | Default |
+| ------- | -------- | ------- |
+| string | ✕        | `black` |
+
 ###### Example
 ```ts
 <ngx-trend
   [data]="data"
   radius="10"
   [showLastLabel]="true"
+  [labelColor]="'red'"
 ></ngx-trend>
 ```
 

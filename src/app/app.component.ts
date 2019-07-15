@@ -38,6 +38,9 @@ const placeholderData = [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0];
       [radius]="radius"
       [strokeWidth]="strokeWidth"
       [strokeLinecap]="strokeLinecap"
+      [showCircle]="true"
+      [showLastLabel]="true"
+      [circleColor]="gradient[gradient.length-1]"
     ></ngx-trend>
 
     <div class="tabGroup">

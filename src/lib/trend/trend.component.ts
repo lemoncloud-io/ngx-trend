@@ -59,11 +59,13 @@ import { normalizeDataset } from './trend.helpers';
       <ng-container *ngFor="let circle of circleCoordinates; index as i">
         <circle [attr.cx]="circle.x" [attr.cy]="circle.y" [attr.r]="circleWidth"
                 [attr.fill]="circleColor" [attr.stroke]="circleColor"
-                [attr.strokeWidth]="circleWidth" />
+                [attr.strokeWidth]="circleWidth"
+        />
         <text *ngIf="showLastLabel && i === circleCoordinates.length - 1"
               class="small"
+              [attr.fill]="labelColor"
               [attr.x]="lastLabelCoordinates.x"
-              [attr.y]="lastLabelCoordinates.y">{{ data[data.length-1] }}</text>
+              [attr.y]="lastLabelCoordinates.y">{{ data[data.length-1] | number }}</text>
       </ng-container>
     </ng-container>
   </svg>
@@ -121,9 +123,10 @@ export class TrendComponent implements OnChanges {
   @ViewChild('pathEl') pathEl: ElementRef;
   // Added for Circle
   @Input() showCircle = false;
-  @Input() showLastLabel = false;
   @Input() circleColor = 'black';
   @Input() circleWidth = 1;
+  @Input() showLastLabel = false;
+  @Input() labelColor = 'black';
   circleCoordinates: any[];
   lastLabelCoordinates: { x: any, y: any };
 
@@ -210,7 +213,7 @@ export class TrendComponent implements OnChanges {
     const { x, y } = this.circleCoordinates[lastIndex];
     const result = {
       x: x,
-      y: y + 10
+      y: y + 15
     };
     return result;
   }
