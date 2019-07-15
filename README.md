@@ -1,5 +1,3 @@
-https://github.com/scttcper/ngx-trend
-
 # Angular Trend For LemonCloud
 
 This repo is forked from [ngx-trend](https://github.com/scttcper/ngx-trend).
