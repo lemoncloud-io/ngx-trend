@@ -1,16 +1,16 @@
 {
-  "name": "ngx-trend",
-  "version": "0.0.0-placeholder",
-  "description": "ngx-trend Angular component",
+  "name": "lemon-ngx-trend",
+  "version": "0.0.2",
+  "description": "ngx-trend Angular component for Lemoncloud",
   "peerDependencies": {
     "@angular/animations": ">=6.0.0 <9.0.0",
     "@angular/common": ">=6.0.0 <9.0.0",
     "@angular/core": ">=6.0.0 <9.0.0"
   },
-  "repository": "scttcper/ngx-trend",
-  "homepage": "https://github.com/scttcper/ngx-trend",
+  "repository": "lemoncloud-io/ngx-trend",
+  "homepage": "https://github.com/lemoncloud-io/ngx-trend",
   "license": "MIT",
-  "bugs": "https://github.com/scttcper/ngx-trend/issues",
+  "bugs": "https://github.com/lemoncloud-io/ngx-trend/issues",
   "keywords": [
     "ngx-trend",
     "typescript",
@@ -19,7 +19,8 @@
     "trend",
     "svg",
     "graph",
-    "data-visualization"
+    "data-visualization",
+    "lemoncloud"
   ],
   "ngPackage": {
     "lib": {

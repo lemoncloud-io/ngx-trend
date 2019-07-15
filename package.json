@@ -1,6 +1,6 @@
 {
-  "name": "ngx-trend",
-  "version": "0.0.0-placeholder",
+  "name": "lemon-ngx-trend",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -16,7 +16,7 @@
     "semantic-release": "cd dist && semantic-release"
   },
   "private": true,
-  "repository": "scttcper/ngx-trend",
+  "repository": "lemoncloud/lemon-ngx-trend",
   "dependencies": {
     "@angular/animations": "8.0.0-rc.3",
     "@angular/cdk": "8.0.1",

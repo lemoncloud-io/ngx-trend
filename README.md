@@ -1,3 +1,62 @@
+https://github.com/scttcper/ngx-trend
+
+# Angular Trend For LemonCloud
+
+This repo is forked from [ngx-trend](https://github.com/scttcper/ngx-trend).
+The following functions have been added to existing modules
+
+- **Circle**
+
+#### `showCircle`
+| Type    | Required | Default |
+| ------- | -------- | ------- |
+| boolean | ✕        | `false` |
+
+Allow the circle(dot) to draw on the graph. It is useful when radius is 0.
+
+#### `circleColor`
+| Type    | Required | Default |
+| ------- | -------- | ------- |
+| string | ✕        | `black` |
+
+#### `circleWidth`
+| Type    | Required | Default |
+| ------- | -------- | ------- |
+| number | ✕        | `1` |
+
+
+###### Example
+```ts
+<ngx-trend
+  [data]="data"
+  radius="10"
+  strokeWidth="2"
+  [showCircle]="true"
+  [circleWidth]="2"
+  [circleColor]="'red'"
+></ngx-trend>
+```
+
+- **Label Text for Last Data**
+
+#### `showLastLabel`
+| Type    | Required | Default |
+| ------- | -------- | ------- |
+| boolean | ✕        | `false` |
+
+###### Example
+```ts
+<ngx-trend
+  [data]="data"
+  radius="10"
+  [showLastLabel]="true"
+></ngx-trend>
+```
+
+Please see below for more information
+
+------
+
 <div align="center">
   <img src="https://raw.githubusercontent.com/scttcper/ngx-trend/master/misc/documentation-assets/ngx-trend-example.png" width="500" alt="Angular Trend">
   <br>
