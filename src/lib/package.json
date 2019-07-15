@@ -20,7 +20,9 @@
     "svg",
     "graph",
     "data-visualization",
-    "lemoncloud"
+    "lemoncloud",
+    "chart",
+    "charts"
   ],
   "ngPackage": {
     "lib": {
