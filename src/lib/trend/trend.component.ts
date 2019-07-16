@@ -63,9 +63,7 @@ import { normalizeDataset } from './trend.helpers';
                 [@circleAnimation]="{
                   value: animationState,
                   params: {
-                    autoDrawDuration: autoDrawDuration,
-                    autoDrawEasing: autoDrawEasing,
-                    lineLength: lineLength
+                    autoDrawDuration: autoDrawDuration
                   }
                 }"
         />
@@ -74,9 +72,7 @@ import { normalizeDataset } from './trend.helpers';
               [@circleAnimation]="{
                   value: animationState,
                   params: {
-                    autoDrawDuration: autoDrawDuration,
-                    autoDrawEasing: autoDrawEasing,
-                    lineLength: lineLength
+                    autoDrawDuration: autoDrawDuration
                   }
                 }"
               [attr.fill]="labelColor"
@@ -119,17 +115,11 @@ import { normalizeDataset } from './trend.helpers';
     trigger('circleAnimation', [
       state('inactive', style({ display: 'none' })),
       transition('* => active', [
-        style({ display: 'initial' }),
-        animate('{{ autoDrawDuration }}ms {{ autoDrawEasing }}',
-          keyframes([
-            style({
-              display: 'none'
-            }),
-            style({
-              display: 'block'
-            }),
+        style({ display: 'none' }),
+        animate('{{ autoDrawDuration }}ms',
+          keyframes([ style({ display: 'block' }),
           ]),
-        )
+        ),
       ]),
     ])
   ],
@@ -196,6 +186,9 @@ export class TrendComponent implements OnChanges {
       }
       return point.value;
     });
+
+    // reset to re-run animation
+    this.animationState = 'inactive';
 
     // Our viewbox needs to be in absolute units, so we'll default to 300x75
     // Our SVG can be a %, though; this is what makes it scalable.
