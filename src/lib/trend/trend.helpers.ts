@@ -6,6 +6,8 @@ export function normalizeDataset(
   maxX: number,
   minY: number,
   maxY: number,
+  minValue: number | undefined,
+  maxValue: number | undefined,
 ) {
   // For the X axis, we want to normalize it based on its index in the array.
   // For the Y axis, we want to normalize it based on the element's value.
@@ -14,7 +16,7 @@ export function normalizeDataset(
   // For the Y axis, we first need to find the min and max of our array,
   // and then normalize those values between 0 and 1.
   const boundariesX = { min: 0, max: data.length - 1 };
-  const boundariesY = { min: Math.min(...data), max: Math.max(...data) };
+  const boundariesY = { min: minValue || Math.min(...data), max: maxValue || Math.max(...data) };
 
   const normalizedData = data.map((point, index) => ({
     x: normalize(index, boundariesX.min, boundariesX.max, minX, maxX),

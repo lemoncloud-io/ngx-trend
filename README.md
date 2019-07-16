@@ -57,6 +57,27 @@ Allow the circle(dot) to draw on the graph. It is useful when radius is 0.
 ></ngx-trend>
 ```
 
+- **Set Min, Max Value**
+
+#### `maxValue`
+| Type    | Required | Default |
+| ------- | -------- | ------- |
+| number | ✕        | `undefined` |
+
+#### `minValue`
+| Type    | Required | Default |
+| ------- | -------- | ------- |
+| number | ✕        | `undefined` |
+
+###### Example
+```ts
+<ngx-trend
+  [data]="data"
+  [maxValue]="1000"
+  [minValue]="0"
+></ngx-trend>
+```
+
 Please see below for more information
 
 ------

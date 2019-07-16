@@ -127,6 +127,8 @@ export class TrendComponent implements OnChanges {
   @Input() circleWidth = 1;
   @Input() showLastLabel = false;
   @Input() labelColor = 'black';
+  @Input() maxValue;
+  @Input() minValue;
   circleCoordinates: any[];
   lastLabelCoordinates: { x: any, y: any };
 
@@ -190,6 +192,8 @@ export class TrendComponent implements OnChanges {
       // indexed from the bottom left, we're inverting the Y min/max.
       viewBoxHeight - this.padding,
       this.padding,
+      this.minValue,
+      this.maxValue
     );
     this.circleCoordinates = normalizedValues;
     this.lastLabelCoordinates = this.getLabelCoordinateOfLast();
@@ -212,7 +216,7 @@ export class TrendComponent implements OnChanges {
     const lastIndex = this.circleCoordinates.length - 1;
     const { x, y } = this.circleCoordinates[lastIndex];
     const result = {
-      x: x,
+      x,
       y: y + 15
     };
     return result;
