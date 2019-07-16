@@ -119,9 +119,17 @@ import { normalizeDataset } from './trend.helpers';
     trigger('circleAnimation', [
       state('inactive', style({ display: 'none' })),
       transition('* => active', [
-        style({ display: 'none' }),
+        style({ display: 'initial' }),
         animate('{{ autoDrawDuration }}ms {{ autoDrawEasing }}',
-          style({ display: 'block' })),
+          keyframes([
+            style({
+              display: 'none'
+            }),
+            style({
+              display: 'block'
+            }),
+          ]),
+        )
       ]),
     ])
   ],
