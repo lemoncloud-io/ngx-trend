@@ -44,7 +44,7 @@ import { normalizeDataset } from './trend.helpers';
     </defs>
     <path fill="none" #pathEl
       [attr.stroke]="pathStroke" [attr.d]="d"
-      [@pathAnimaiton]="{
+      [@pathAnimation]="{
         value: animationState,
         params: {
           autoDrawDuration: autoDrawDuration,
@@ -52,7 +52,7 @@ import { normalizeDataset } from './trend.helpers';
           lineLength: lineLength
         }
       }" />
-    <ng-container *ngIf="showCircle">
+    <ng-container *ngIf="showCircle" >
       <style>
         .small { font-size: 12px; font-weight: 400; text-anchor: end; stroke-width: 0;}
       </style>
@@ -60,9 +60,25 @@ import { normalizeDataset } from './trend.helpers';
         <circle [attr.cx]="circle.x" [attr.cy]="circle.y" [attr.r]="circleWidth"
                 [attr.fill]="circleColor" [attr.stroke]="circleColor"
                 [attr.strokeWidth]="circleWidth"
+                [@circleAnimation]="{
+                  value: animationState,
+                  params: {
+                    autoDrawDuration: autoDrawDuration,
+                    autoDrawEasing: autoDrawEasing,
+                    lineLength: lineLength
+                  }
+                }"
         />
         <text *ngIf="showLastLabel && i === circleCoordinates.length - 1"
               class="small"
+              [@circleAnimation]="{
+                  value: animationState,
+                  params: {
+                    autoDrawDuration: autoDrawDuration,
+                    autoDrawEasing: autoDrawEasing,
+                    lineLength: lineLength
+                  }
+                }"
               [attr.fill]="labelColor"
               [attr.x]="lastLabelCoordinates.x"
               [attr.y]="lastLabelCoordinates.y">{{ data[data.length-1] | number }}</text>
@@ -71,7 +87,7 @@ import { normalizeDataset } from './trend.helpers';
   </svg>
   `,
   animations: [
-    trigger('pathAnimaiton', [
+    trigger('pathAnimation', [
       state('inactive', style({ display: 'none' })),
       transition('* => active', [
         style({ display: 'initial' }),
@@ -100,6 +116,14 @@ import { normalizeDataset } from './trend.helpers';
         }),
       ]),
     ]),
+    trigger('circleAnimation', [
+      state('inactive', style({ display: 'none' })),
+      transition('* => active', [
+        style({ display: 'none' }),
+        animate('{{ autoDrawDuration }}ms {{ autoDrawEasing }}',
+          style({ display: 'block' })),
+      ]),
+    ])
   ],
 })
 export class TrendComponent implements OnChanges {
