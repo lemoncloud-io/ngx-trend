@@ -113,11 +113,11 @@ import { normalizeDataset } from './trend.helpers';
       ]),
     ]),
     trigger('circleAnimation', [
-      state('inactive', style({ display: 'none', opacity: 0 })),
+      state('inactive', style({ visibility: 'hidden', opacity: 0 })),
       transition('* => active', [
-        style({ display: 'none', opacity: 0 }),
+        style({ visibility: 'hidden' }),
         animate('{{ autoDrawDuration }}ms',
-          keyframes([ style({ display: 'block', opacity: 1 }),
+          keyframes([ style({ visibility: 'visible' }),
           ]),
         ),
       ]),
